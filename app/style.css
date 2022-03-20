@@ -1,0 +1,125 @@
+html,body
+{
+width: 100%;
+height: 100vh;
+}
+
+body
+{
+margin: 0;
+padding: 0;
+overflow: hidden;
+font-family: 'Roboto';
+}
+
+#cont
+{
+display: grid;
+grid-template-rows: auto 1fr;
+background: white;
+}
+
+header
+{
+position: relative;
+background: #009587;
+padding: 0.25rem 1rem;
+text-align: left;
+z-index: 1;
+box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+}
+
+.header__form
+{
+margin: 0;
+top: 0em;
+left: 0em;
+}
+
+.header__title
+{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+text-align: center;
+font-size: 1.5rem;
+color: #fefefc;
+}
+
+main
+{
+background: #eeeeee;
+padding: 1em;
+position: relative;
+}
+
+#chart
+{
+box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+}
+
+.box
+{
+width: 100%;
+height: 100%;
+overflow: hidden;
+box-sizing: border-box;
+}
+
+a
+{
+text-decoration: none;
+color: #007167;
+}
+
+a:hover
+{
+text-decoration: underline;
+}
+
+.search-widget
+{
+position: relative;
+width: min-content;
+display: inline-block;
+}
+
+.search-widget__select
+{
+position: absolute;
+top: 100%;
+left: 0;
+display: grid;
+min-width: 100%;
+width: max-content;
+border: 1px solid #ccc;
+cursor: default;
+}
+
+.search-widget__item
+{
+padding: 0.3rem;
+color: black;
+background: white;
+text-align: left;
+font-size: 1rem;
+font-family: 'Roboto';
+}
+
+.search-widget__select > .search-widget__item:hover
+{
+background: rgb(228, 228, 228);
+}
+
+.hidden
+{
+visibility: hidden;
+}
+
+input
+{
+border: 1px solid #ccc;
+border-radius: 0.3rem;
+width: 10em;
+}

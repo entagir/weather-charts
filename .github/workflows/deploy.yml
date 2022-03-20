@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Setup key
+      - run: set -eu
+      - run: mkdir "$HOME/.ssh"
+      - run: echo "${{secrets.KEY}}" > "$HOME/.ssh/id_rsa"
+      - run: chmod 600 "$HOME/.ssh/id_rsa"
+
+      # Setup api key
+      - run: perl -pi -e 's/YANDEX_WEATHER_API_KEY/$ENV{TOKEN}/' app/api/index.php
+        env:
+          TOKEN: ${{ secrets.YANDEX_WEATHER_API_KEY }} 
+
+      # Deploy
+      - run: cd app && rsync -e "ssh -p 22 -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no" --archive --compress --delete . u0418897@31.31.198.239:/var/www/u0418897/public_html/weather.entagir.ru
